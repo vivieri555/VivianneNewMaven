@@ -1,5 +1,9 @@
 package Member;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Member {
     private int id;
     private String name;
@@ -15,7 +19,7 @@ public class Member {
         this.status = status;
         this.history = history;
     }
-
+    @XmlElement
     public int getId() {
         return id;
     }
@@ -23,7 +27,7 @@ public class Member {
     public void setId(int id) {
         this.id = id;
     }
-
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -31,7 +35,7 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-
+    @XmlElement
     public String getStatus() {
         return status;
     }
@@ -39,7 +43,7 @@ public class Member {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    @XmlElement
     public String getHistory() {
         return history;
     }

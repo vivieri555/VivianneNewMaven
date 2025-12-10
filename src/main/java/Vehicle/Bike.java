@@ -1,5 +1,9 @@
 package Vehicle;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Bike extends Vehicle{
     private String gears;
     private String basket;
@@ -9,12 +13,14 @@ public class Bike extends Vehicle{
         this.gears = gears;
         this.basket = basket;
     }
+    @XmlElement
     public String getGears() {
         return gears;
     }
     public void setGears(String gears) {
         this.gears = gears;
     }
+    @XmlElement
     public String getBasket () {
         return basket;
     }

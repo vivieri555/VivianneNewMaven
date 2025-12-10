@@ -1,8 +1,9 @@
 package Other;
 
+import Member.*;
 import javafx.scene.control.Label;
 
-public class Exception {
+public class Exceptions {
     MembershipService membershipService = new MembershipService(new MemberRegistry());
     MemberRegistry memberRegistry = new MemberRegistry();
 

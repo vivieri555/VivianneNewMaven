@@ -1,7 +1,10 @@
 package Vehicle;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.scene.control.Label;
 
+@XmlRootElement
 public class Car extends Vehicle{
     private String vehicleType;
     private String hasRearCamera;
@@ -13,18 +16,21 @@ public class Car extends Vehicle{
         this.hasRearCamera = hasRearCamera;
         this.gearbox = gearbox;
     }
+    @XmlElement
     public String getVehicleType() {
         return vehicleType;
     }
     public void setVehicleType (String vehicleType) {
         this.vehicleType = vehicleType;
     }
+    @XmlElement
     public String getHasRearCamera() {
         return hasRearCamera;
     }
     public void setHasRearCamera(String hasRearCamera) {
         this.hasRearCamera = hasRearCamera;
     }
+    @XmlElement
     public String getGearbox() {
         return gearbox;
     }

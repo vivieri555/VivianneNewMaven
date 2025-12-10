@@ -8,7 +8,12 @@ import Other.AlertBox;
 import Rental.Inventory;
 import Rental.RentalService;
 import Vehicle.*;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -18,6 +23,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -84,6 +91,14 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+
+        stage.setTitle("Vivis Biluthyrning");
+        BorderPane borderPane = new BorderPane();
+        borderPane.setPadding(new Insets(10, 10, 10, 10));
+        Label headLabel = new Label("\tVälkommen\n till Vivis biluthyrning!");
+        headLabel.getStyleClass().add("label-green");
+        Scene scene1 = new Scene(borderPane, 700, 700);
+
         FileService fileService = new FileService();
         Vehicle vehicle = new Vehicle();
         ObservableList<Member> members = fileService.readMembers();
@@ -95,20 +110,11 @@ public class Main extends Application {
         RentalService rentalService = new RentalService(inventory);
         AlertBox alertBox = new AlertBox(membershipService);
 
-
-        stage.setTitle("Vivis Biluthyrning");
-        BorderPane borderPane = new BorderPane();
-        borderPane.setPadding(new Insets(10, 10, 10, 10));
-        Label headLabel = new Label("\tVälkommen\n till Vivis biluthyrning!");
-        headLabel.getStyleClass().add("label-green");
-        Scene scene1 = new Scene(borderPane, 700, 700);
-
         TableView<Vehicle> vehicleTable = new TableView<>();
 
         TableColumn<Vehicle, String> brandColumn = new TableColumn("Märke");
         brandColumn.setMinWidth(200);
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        vehicleTable.setItems(inventory.getVehicleList());
         TextField brandInput = new TextField();
         brandInput.setPromptText("Märke");
         brandInput.setMinWidth(200);
@@ -153,7 +159,8 @@ public class Main extends Application {
         gearboxInput.setMinWidth(100);
 
         vehicleTable.setItems(inventory.getVehicleList());
-        vehicleTable.getColumns().addAll(brandColumn, modelColumn, loanableColumn, batteryColumn, vehicleTypeColumn, hasRearCameraColumn, gearboxColumn);
+        vehicleTable.getColumns().addAll(brandColumn, modelColumn, loanableColumn,
+                batteryColumn, vehicleTypeColumn, hasRearCameraColumn, gearboxColumn);
 
         //TableView medlemmar
         TableView<Member> table = new TableView<>();
@@ -308,9 +315,6 @@ public class Main extends Application {
         addButton.setOnAction(e -> {
             Member member3 = new Member();
             saveLabel.setText(String.valueOf(membershipService.addId(idText, member3)));
-            // System.out.println(membershipService.addId(idText, member3));
-            //Lägga in Label "inte giligt nummer"
-            //smäller på integerparse, göra om från boolean elr ny metod som kan skriva ut int variebel
             member3.setId(Integer.parseInt(idText.getText()));
             member3.setName(nameInput.getText());
             member3.setStatus(statusText.getText());
@@ -418,5 +422,10 @@ public class Main extends Application {
         inventory.addVehicle(new Bike("Kawasaki", "i3", true, "7-växlar", "Finns cykelkorg"));
         inventory.addVehicle(new Bike("Turbo", "v8", true, "5-växlar", "Ingen cykelkorg"));
         return inventory;
+    }
+    private MemberRegistry getMemberRegistry() {
+        MemberRegistry memberRegistry = new MemberRegistry();
+        memberRegistry.add(new Member(2, "Nora", "Standard", "Ingen historik"));
+        return memberRegistry;
     }
 }

@@ -1,0 +1,29 @@
+.root {
+    -fx-background-color: #e9b9a9;
+    -fx-font-size: 14pt;
+}
+.label {
+    -fx-text-fill: #e8e8e8;
+}
+.label-green {
+    -fx-background-color: #e9b9a9;
+    -fx-text-fill: #556B2F;
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+    -fx-stroke: #9400D3
+}
+.button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #808000;
+    -fx-stroke: #9400D3;
+}
+.menu-item {
+    -fx-background-color: #808000;
+    -fx-text-fill: #FFFFFF;
+    -fx-stroke: #9400D3;
+}
+.menu-bar {
+    -fx-background-color: #808000;
+    -fx-text-fill: #FFFFFF;
+    -fx-stroke: #9400D3;
+}
