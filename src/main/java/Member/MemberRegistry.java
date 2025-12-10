@@ -1,10 +1,8 @@
 package Member;
 
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-@XmlRootElement
+
 public class MemberRegistry {
 
     private ObservableList<Member> members = FXCollections.observableArrayList();
@@ -15,7 +13,7 @@ public class MemberRegistry {
         this.members = members;
     }
     //för att hämta medlemmar i main sen med getter
-    @XmlElement
+
     public ObservableList<Member>getMembers(){
         return members;
     }

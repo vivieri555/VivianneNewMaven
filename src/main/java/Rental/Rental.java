@@ -1,5 +1,8 @@
 package Rental;
 
+import Member.Member;
+import Vehicle.Vehicle;
+
 public class Rental{
 
     Member member;

@@ -8,10 +8,6 @@ import Other.AlertBox;
 import Rental.Inventory;
 import Rental.RentalService;
 import Vehicle.*;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -406,7 +402,7 @@ public class Main extends Application {
 
         borderPane.getChildren().addAll();
 
-        scene1.getStylesheets().add("MenuColors.css");
+        scene1.getStylesheets().add("Color.css");
         stage.setScene(scene1);
         stage.show();
 
